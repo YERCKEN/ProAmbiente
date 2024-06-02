@@ -1,0 +1,7 @@
+#  PLATAFORMA DE PROTECCIÓN Y CUIDADO DEL AMBIENTE
+JIC 2024
+
+# DEPENDENCIAS
+> [!IMPORTANT]
+> 
+> npm i express mysql2 morgan
