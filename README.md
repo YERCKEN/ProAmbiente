@@ -1,22 +1,24 @@
-#  PLATAFORMA DE PROTECCIÓN Y CUIDADO DEL AMBIENTE
-JIC 2024
+#  DESCRIPCIÓN DEL PROYECTO 
+**Plataforma de Protección y Cuidado del Ambiente**
 
-> [!IMPORTANT]
-> 
-> Se utiliza la sintaxis de import y export en este proyecto por lo cual en el package.json nos encontramos con la propiedad type : module
+***Proyecto JIC 2024*** 
+
 
 # DEPENDENCIAS
 > [!IMPORTANT]
 > 
-> npm i express mysql2 morgan
+> ***Comando*** npm i express mysql2 morgan
 
 > [!TIP]
 > 
 > npm i nodemon -D
 
 # PLANTEAMIENTO
-> [!IMPORTANT]
-> 
-> Proyecto Excalidraw
-> (https://excalidraw.com/#room=d20b8c2e69d4a7a04e73,elFew5O2-83N7xoQgKu0Xg)
+
+
+![diagrama](https://github.com/YERCKEN/ProAmbiente/assets/42678417/435e1b21-61f6-4dda-9385-00a4e6089f1f)
+
+Proyecto Excalidraw
+
+https://excalidraw.com/#room=d20b8c2e69d4a7a04e73,elFew5O2-83N7xoQgKu0Xg
 
