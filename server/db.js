@@ -8,5 +8,5 @@ export const pool = createPool ({
     user: 'root',
     password: 'admin',
     database: 'proambiente'
-});
+})
 

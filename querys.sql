@@ -27,11 +27,21 @@ CREATE TABLE usuarios (
     es_experto BOOLEAN DEFAULT FALSE
 );
 
+-- Insertar los usuarios
+INSERT INTO usuarios (nombre_usuario, contrasena, correo, nombre_completo)
+VALUES ('yercken', '1234', 'yercken@correo.com', 'Edwar I Gonzalez C'),
+       ('dilanDev', '1234', 'dilan@correo.com', 'Dilan Sobenis'),
+       ('JP0770', '1234', 'jeisson@correo.com', 'Jeisson A. Paredes');
+
+
 -- Tabla de Roles (por ejemplo, usuario normal, administrador, experto)
 CREATE TABLE roles (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_rol VARCHAR(50) NOT NULL UNIQUE
 );
+
+-- Insertar roles
+INSERT INTO roles (nombre_rol) VALUES ('usuario');
 
 -- Tabla de Roles de Usuarios
 CREATE TABLE usuario_roles (
@@ -41,6 +51,13 @@ CREATE TABLE usuario_roles (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
     FOREIGN KEY (rol_id) REFERENCES roles(id) ON DELETE CASCADE
 );
+
+-- Asignar rol de usuario a todos los usuarios
+INSERT INTO usuario_roles (usuario_id, rol_id)
+SELECT id, (SELECT id FROM roles WHERE nombre_rol = 'usuario')
+FROM usuarios;
+
+SELECT * FROM usuario_roles;
 
 -- Tabla de Foros
 CREATE TABLE foros (
@@ -62,6 +79,29 @@ CREATE TABLE comentarios (
     FOREIGN KEY (foro_id) REFERENCES foros(id) ON DELETE CASCADE,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL
 );
+
+-- Insertar foros sobre medio ambiente
+INSERT INTO foros (titulo, descripcion, usuario_id) 
+VALUES ('Reciclaje en el hogar', 'Discusión sobre cómo implementar prácticas de reciclaje en casa.', 4),
+       ('Conservación de especies en peligro', 'Charla sobre estrategias para proteger y conservar especies en riesgo de extinción.', 5),
+       ('Impacto de la deforestación', 'Debate sobre los efectos de la deforestación en el medio ambiente.', 6);
+
+-- Insertar comentarios en los foros
+INSERT INTO comentarios (foro_id, usuario_id, contenido)
+VALUES (7, 4, 'Es importante separar adecuadamente los materiales reciclables para facilitar su reciclaje.'),
+       (8, 5, 'Se deberían implementar más medidas para proteger las especies en peligro, como la creación de reservas naturales.'),
+       (9, 6, 'La deforestación tiene un impacto devastador en la biodiversidad y el clima global.');
+
+-- Verificar que los foros y comentarios se crearon correctamente
+SELECT * FROM foros;
+SELECT * FROM comentarios;
+
+SELECT * FROM usuarios;
+
+
+
+
+
 
 -- Tabla de Reportes
 CREATE TABLE reportes (
