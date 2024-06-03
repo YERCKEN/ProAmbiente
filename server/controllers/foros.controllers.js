@@ -2,13 +2,38 @@
 import {pool} from '../db.js'
 
 // FUNCIÓN PARA OBTENER FOROS
-export const getForos = (req, res) => {
-    res.send('OBTENIENDO FOROS')
+export const getForos = async (req, res) => {
+
+    console.log('\n\n=========================================================')
+    console.log('\nOBTENIENDO FOROS\n\n');
+
+    //TODO: OBTENEMOS TODOS LOS FOROS DESDE LA BD
+    const [result] = await pool.query('SELECT * FROM foros ORDER BY fecha_creacion DESC');
+
+    console.log(result);
+    //MANDAMOS UN JSON DE RESPUESTA
+    res.json(result)
+
+    console.log('\n\n=========================================================')
+
 }
 
 //FUNCIÓN PARA OBTENER FORO
-export const  getForo = (req, res) => {
-    res.send('OBTENIENDO UN FORO')
+export const  getForo = async (req, res) => {
+    //TODO: OBTENEMOS UN FORO EN ESPECÍFICO
+    console.log('\n\n=========================================================')
+    console.log('\nOBTENIENDO FORO\n\n');
+
+    const [result] = await pool.query('SELECT * FROM foros WHERE id = ?', req.params.id)
+    console.log(result)
+
+    //! VERIFICAMOS SI SE ENCONTRÓ ALGÚN VALOR
+    if (result.length == 0)
+        return res.status(404).json({message: 'FORO NO ENCONTRADO'})
+
+    res.json(result)
+
+    console.log('\n\n=========================================================')
 }
 
 //FUNCIÓN PARA OBTENER FORO
