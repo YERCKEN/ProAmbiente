@@ -1,4 +1,5 @@
-//TODO: BLOQUE DE DEPENDENCIAS, VARIABLES Y CONSTANTES =======================================
+
+//BLOQUE DE DEPENDENCIAS, VARIABLES Y CONSTANTES =======================================
 
 //IMPORTAMOS EXPRESS
 import express from 'express';
@@ -13,12 +14,12 @@ import forosRoutes from './routes/foros.routes.js';
 //EJECUTAMOS EXPRESS
 const app = express();
 
-//TODO: BLOQUE DE EJECUCIÓN DEL SERVER =======================================================
+//BLOQUE DE EJECUCIÓN DEL SERVER =======================================================
 
 // DEFINIMOS ESTA SENTENCIA PARA QUE EL BACKEND PUEDA LEER ARCHIVOS JSON
 app.use(express.json())
 
-//! USAMOS LAS RUTAS IMPORTADAS
+//USAMOS LAS RUTAS IMPORTADAS
 app.use(indexRoutes);
 app.use(forosRoutes);
 

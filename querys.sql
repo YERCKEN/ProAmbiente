@@ -64,7 +64,7 @@ CREATE TABLE foros (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     descripcion TEXT,
-    usuario_id INT,
+    usuario_id INT NOT NULL,
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL
 );
@@ -95,7 +95,6 @@ VALUES (7, 4, 'Es importante separar adecuadamente los materiales reciclables pa
 -- Verificar que los foros y comentarios se crearon correctamente
 SELECT * FROM foros;
 SELECT * FROM comentarios;
-
 SELECT * FROM usuarios;
 
 
