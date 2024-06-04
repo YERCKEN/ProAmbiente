@@ -2,7 +2,7 @@
 import { Router } from "express";
 
 //IMPORTAMOS CONTROLADOR
-import {getForos, getForo, createForo, updateForo, deleteForo  } from "../controllers/foros.controllers.js";
+import {getForos, getForo, createForo, updateForo, deleteForo} from "../controllers/foros.controllers.js";
 
 //ejecutamos el enrutador
 const router = Router();

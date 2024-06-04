@@ -1,14 +1,15 @@
-// IMPORTAMOS CONEXION BD
+// HOLA IMPORTAMOS CONEXION BD
 import {pool} from '../db.js'
 
 //? FUNCIÓN PARA OBTENER FOROS  ====================================================================
+
 export const getForos = async (req, res) => {
 
    try {
 
         //IMPRIMIMOS EL ENCABEZADO
         printEncabezado('OBTENIENDO FOROS');
-        //! OBTENEMOS TODOS LOS FOROS DESDE LA BD
+        // OBTENEMOS TODOS LOS FOROS DESDE LA BD
         const [result] = await pool.query('SELECT * FROM foros ORDER BY fecha_creacion DESC');
         console.log(result);
         //MANDAMOS UN JSON DE RESPUESTA
@@ -30,7 +31,7 @@ export const  getForo = async (req, res) => {
         //IMPRIMIMOS EL ENCABEZADO
         printEncabezado('OBTENIENDO FORO')
 
-        //! Obtenemos un foro por su ID
+        //Obtenemos un foro por su ID
         const [result] = await pool.query('SELECT * FROM foros WHERE id = ?', req.params.id)
 
         console.log(result)
@@ -62,7 +63,7 @@ export const  createForo = async (req, res) => {
         //obetenmos los valores
         const {titulo, descripcion, idUsuario} = req.body
         
-        //! insertamos nuevo foro en la BD
+        // insertamos nuevo foro en la BD
         const [result] = await pool.query('INSERT INTO foros(titulo, descripcion, usuario_id) VALUES (?, ?, ?)', [titulo, descripcion, idUsuario]);
 
         //imprimimos valores en consola
@@ -91,7 +92,7 @@ export const  updateForo = async (req, res) => {
 
         printEncabezado('ACTUALIZANDO UN DATOS DE UN FORO');
 
-        //! ACTUALIZAMOS EL FORO CON SU ID
+        // ACTUALIZAMOS EL FORO CON SU ID
         const [result] = await pool.query('UPDATE foros SET ? WHERE id = ?', [
             req.body,
             req.params.id
@@ -116,7 +117,7 @@ export const  deleteForo = async (req, res) => {
 
     try {
 
-        //! ELIMINAMOS UN FORO POR SU ID
+        // ELIMINAMOS UN FORO POR SU ID
         const [result] = await pool.query('DELETE FROM foros WHERE id = ?', [req.params.id]);
         
         if( result.affectedRows === 0)
