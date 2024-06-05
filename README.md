@@ -23,9 +23,10 @@ Proyecto Excalidraw
 https://excalidraw.com/#room=d20b8c2e69d4a7a04e73,elFew5O2-83N7xoQgKu0Xg
 
 # PALETA DE COLORES
-![PALETA-DE-COLORES](https://github.com/YERCKEN/ProAmbiente/assets/42678417/42fe6db7-c10f-4cda-a578-e197a0058601)
+![PALETA-DE-COLORES](https://github.com/YERCKEN/ProAmbiente/assets/42678417/1c9f542e-06d9-4556-9857-fc5c8aea0c68)
 
-- ***VERDE*** #93BC58  
+
+- ***VERDE*** #00CC00
 - ***GRIS DARK*** #191A18  
 - ***GRIS CLARO*** #333333
 
