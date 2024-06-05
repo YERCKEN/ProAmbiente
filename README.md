@@ -7,7 +7,7 @@
 # DEPENDENCIAS
 > [!IMPORTANT]
 > 
-> ***Comando*** npm i express mysql2 morgan bcryptjs jsonwebtoken
+> ***Comando*** npm i express mysql2 morgan bcryptjs jsonwebtoken cookie-parser
 
 > [!TIP]
 > 
