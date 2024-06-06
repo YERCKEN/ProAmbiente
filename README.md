@@ -4,7 +4,7 @@
 ***Proyecto JIC 2024*** 
 
 
-# DEPENDENCIAS
+# DEPENDENCIAS BACKEND
 > [!IMPORTANT]
 > 
 > ***Comando*** npm i express mysql2 morgan bcryptjs jsonwebtoken cookie-parser zod
@@ -12,6 +12,11 @@
 > [!TIP]
 > 
 > npm i nodemon -D
+
+# DEPENDENCIAS BACKEND
+> [!IMPORTANT]
+
+>Reac-Router-Dom
 
 # PLANTEAMIENTO
 
