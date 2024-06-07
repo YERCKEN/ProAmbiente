@@ -1,5 +1,5 @@
-create database proambiente;
-use proambiente;
+CREATE DATABASE proambiente;
+USE proambiente;
 
 -- Crear la tabla desarrolladores
 CREATE TABLE desarrolladores (
@@ -15,7 +15,6 @@ INSERT INTO desarrolladores (nombre, apellido, nick) VALUES
 ('Jeisson', 'Paredes', 'JP0770'),
 ('Dilan', 'Sobenis', 'DilanDev');
 
-
 -- Tabla de Usuarios
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -29,10 +28,10 @@ CREATE TABLE usuarios (
 
 -- Insertar los usuarios
 INSERT INTO usuarios (nombre_usuario, contrasena, correo, nombre_completo)
-VALUES ('yercken', '1234', 'yercken@correo.com', 'Edwar I Gonzalez C'),
-       ('dilanDev', '1234', 'dilan@correo.com', 'Dilan Sobenis'),
-       ('JP0770', '1234', 'jeisson@correo.com', 'Jeisson A. Paredes');
-
+VALUES 
+('yercken', '1234', 'yercken@correo.com', 'Edwar I Gonzalez C'),
+('dilanDev', '1234', 'dilan@correo.com', 'Dilan Sobenis'),
+('JP0770', '1234', 'jeisson@correo.com', 'Jeisson A. Paredes');
 
 -- Tabla de Roles (por ejemplo, usuario normal, administrador, experto)
 CREATE TABLE roles (
@@ -57,14 +56,12 @@ INSERT INTO usuario_roles (usuario_id, rol_id)
 SELECT id, (SELECT id FROM roles WHERE nombre_rol = 'usuario')
 FROM usuarios;
 
-SELECT * FROM usuario_roles;
-
 -- Tabla de Foros
 CREATE TABLE foros (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
     descripcion TEXT,
-    usuario_id INT NOT NULL,
+    usuario_id INT,
     fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL
 );
@@ -82,25 +79,17 @@ CREATE TABLE comentarios (
 
 -- Insertar foros sobre medio ambiente
 INSERT INTO foros (titulo, descripcion, usuario_id) 
-VALUES ('Reciclaje en el hogar', 'Discusión sobre cómo implementar prácticas de reciclaje en casa.', 4),
-       ('Conservación de especies en peligro', 'Charla sobre estrategias para proteger y conservar especies en riesgo de extinción.', 5),
-       ('Impacto de la deforestación', 'Debate sobre los efectos de la deforestación en el medio ambiente.', 6);
+VALUES 
+('Reciclaje en el hogar', 'Discusión sobre cómo implementar prácticas de reciclaje en casa.', 1),
+('Conservación de especies en peligro', 'Charla sobre estrategias para proteger y conservar especies en riesgo de extinción.', 2),
+('Impacto de la deforestación', 'Debate sobre los efectos de la deforestación en el medio ambiente.', 3);
 
 -- Insertar comentarios en los foros
 INSERT INTO comentarios (foro_id, usuario_id, contenido)
-VALUES (7, 4, 'Es importante separar adecuadamente los materiales reciclables para facilitar su reciclaje.'),
-       (8, 5, 'Se deberían implementar más medidas para proteger las especies en peligro, como la creación de reservas naturales.'),
-       (9, 6, 'La deforestación tiene un impacto devastador en la biodiversidad y el clima global.');
-
--- Verificar que los foros y comentarios se crearon correctamente
-SELECT * FROM foros;
-SELECT * FROM comentarios;
-SELECT * FROM usuarios;
-
-
-
-
-
+VALUES 
+(1, 1, 'Es importante separar adecuadamente los materiales reciclables para facilitar su reciclaje.'),
+(2, 2, 'Se deberían implementar más medidas para proteger las especies en peligro, como la creación de reservas naturales.'),
+(3, 3, 'La deforestación tiene un impacto devastador en la biodiversidad y el clima global.');
 
 -- Tabla de Reportes
 CREATE TABLE reportes (
