@@ -19,7 +19,7 @@ export const login = async (req, res) => {
         const [result] = await pool.query('SELECT * FROM usuarios WHERE nombre_usuario = ?', [username]);
         
         if(result.length === 0)
-            return res.status(500).json({message: 'El usuario no existe'})
+            return res.status(500).json(['El usuario no existe'])
 
         //guardamos data del user
         const userData = result[0];
@@ -28,7 +28,7 @@ export const login = async (req, res) => {
 
         //COMPARAMOS LA CONTRASEÑA
         const isMatch = await bcrypt.compare(password, userData.contrasena);
-        if(!isMatch) return res.status(500).json({message: "Contraseña incorrecta"});
+        if(!isMatch) return res.status(500).json(["Contraseña incorrecta"]);
 
         //GENRAMOS TOKEN
         const token = await createAccessToken({id: userData.id });
@@ -44,7 +44,7 @@ export const login = async (req, res) => {
 
     } catch (error) {
 
-        return res.status(500).json({message: error.message})
+        return res.status(500).json([error.message])
     }
 
 }
@@ -98,7 +98,7 @@ export const register = async (req, res) => {
 
     } catch (error) {
 
-        return res.status(500).json({message: error.message})
+        return res.status(500).json([error.message])
     }
 
 }
@@ -139,7 +139,7 @@ export  const profile = async(req, res)=>{
 
     } catch (error) {
         
-        return res.status(500).json({message: error.message})
+        return res.status(500).json([error.message])
     }
 
             

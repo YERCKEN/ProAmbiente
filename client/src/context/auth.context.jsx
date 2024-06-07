@@ -1,6 +1,6 @@
 
-import { createContext, useState} from 'react';
-import { registerRequest } from '../api/auth.js';
+import { createContext, useState, useEffect} from 'react';
+import { registerRequest, loginRequest } from '../api/auth.js';
 import PropTypes from 'prop-types';
 
 export const AuthContext = createContext();
@@ -15,7 +15,7 @@ export const AuthProvider = ({children}) =>{
     //NEUVO ESTADO PARA SABER LOS ERRORES DESDE EL BACKEND
     const [errors, setErrors] = useState([]);
 
-
+    //FUNCIÓN PARA EL REGISTRO  - -----------------------------------------------------------------------
     const signup = async (user) =>{
 
         try {
@@ -27,15 +27,42 @@ export const AuthProvider = ({children}) =>{
             setIsAuthenticated(true); 
 
         } catch (error) {
-
+            
+            console.table(error.response.data)
             setErrors(error.response.data)
         }
     };
+
+    //FUNCIÓN PARA EL REGISTRO  - -----------------------------------------------------------------------
+
+    const signin = async(user)=>{
+
+        try {
+            const res = await loginRequest(user);
+            console.log(res.data)
+        
+        } catch (error) {
+            
+            console.table(error.response.data)
+            setErrors(error.response.data)
+        }
+
+    };
+
+    useEffect(()=>{
+        if(errors.length > 0){
+            const timer = setTimeout(()=>{
+                setErrors([])
+            }, 5000)
+            return ()=> clearTimeout(timer)
+        }
+    }, [errors])
 
     return(
 
        <AuthContext.Provider value ={{
         signup,
+        signin,
         user,
         isAuthenticated,
         errors
