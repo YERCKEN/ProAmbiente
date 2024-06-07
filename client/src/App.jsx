@@ -7,6 +7,7 @@ import { ForosContextProvider } from "./context/ForosContext";
 import ForosList from "./pages/Foros/ForosList";
 import Noticias from "./pages/Noticias/NoticiasList";
 import FormularioForo from "./pages/Foros/FormularioForo";
+import HomePage from './pages/homePage.jsx'
 
 //importamos el authprovider
 import { AuthProvider } from "./context/auth.context.jsx";
@@ -17,13 +18,8 @@ function App() {
     <AuthProvider>
       <ForosContextProvider>
         <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <h1 className="text-3xl font-bold underline">HOLA BB</h1>
-              }
-            />
+        <Routes>
+          <Route path='/' element={<HomePage/>}/>
 
             <Route path="/login" element={<LoginPage />} />
 
@@ -42,3 +38,4 @@ function App() {
 }
 
 export default App;
+

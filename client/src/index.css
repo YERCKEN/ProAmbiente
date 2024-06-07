@@ -55,3 +55,7 @@ body {
     background-color: #EF4444;
     
 }
+
+.linkHover:hover{
+    color: #00CC00;;
+}
