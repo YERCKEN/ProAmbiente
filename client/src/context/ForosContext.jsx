@@ -1,29 +1,41 @@
-import { createContext, useState, useEffect } from "react";
-import { foros as data } from "../data/foros";
+import { createContext, useState, useEffect, useContext } from "react";
+import { foros as data } from "../data/foros2";
+import { getForosRequest, createForoRequest } from "../api/foros.js";
+import { getForosRequest2 } from "../api/auth.js";
+import PropTypes from 'prop-types';
 
 export const ForosContext = createContext();
 
-export function ForosContextProvider(props) {
+export function ForosContextProvider({children}) {
   const [foros, setForos] = useState([]);
-  function createForos(Foro) {
-    setForos([
-      ...foros,
-      {
-        titulo: foro.titulo,
-        id: foros.length,
-        descripcion: foro.descripcion,
-        usuario_id: foro.usuario_id,
-        fecha_creacion: foro.fecha_creacion
-      },
-    ]);
+  const getForos = async () => {
+    try{
+      const res = await getForosRequest2();
+    setForos(res.data)
+    }catch(error){
+      console.error(error)
+    }
+    
+    
+
+  };
+  const createForos = async (Foro) => {
+    const res = await createForoRequest(foro)
+    
+    console.log(res)
   }
+  {/* 
   useEffect(() => {
     setForos(data);
   }, []);
-
+  */}
   return (
-    <ForosContext.Provider value={{ foros, createForos }}>
-      {props.children}
+    <ForosContext.Provider value={{ foros, createForos, getForos }}>
+      {children}
     </ForosContext.Provider>
   );
 }
+// Validación de las props
+ForosContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

@@ -1,27 +1,36 @@
 import ForosCard from "./ForosCard";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ForosContext } from "../../context/ForosContext";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useForos } from "../../context/useForos";
 
 function ForosList() {
-  const { foros } = useContext(ForosContext);
-  if (foros.length === 0) {
-    return <h1>no hay tareas aun</h1>;
-  }
+  const { getForos, foros } = useForos();
+  useEffect(() => {
+    getForos();
+  }, []);
+
   return (
     <div>
       {foros.map((foro) => (
-        <ForosCard key={foro.id} foro={foro} />
+        <div key={foro.id}>
+          <h1>{foro.titulo}</h1>
+          <p>{foro.descripcion}</p>
+        </div>
       ))}
-      
-    <button>
-      <Link to="/FormularioForo">Crear Foro</Link>
-    </button>
     </div>
-
-    
   );
 }
 
 export default ForosList;
+/*
+
+----------------------------------------------------
+{foros.map((foro) => (
+        <ForosCard key={foro.id} foro={foro} />
+      ))}
+
+      <button>
+        <Link to="/FormularioForo">Crear Foro</Link>
+      </button> */
