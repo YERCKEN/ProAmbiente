@@ -49,16 +49,28 @@ export const login = async (req, res) => {
 
 }
 
-//LOGIN ================================================================
+//REGSITRO ================================================================
 export const register = async (req, res) => {
 
     try {
 
         // OBTENEMOS EL USUARIO CONTRASEÑA CORREO
         const {username, name, email, password} = req.body
-    
-        //ENCRIPTAMOS LA CONTASEÑA
         
+        // VERIFICAMOS QUE NO EXISTE un username y un correo igual y respondemos los errores correspondientes
+        const [existingUser] = await pool.query('SELECT * FROM usuarios WHERE nombre_usuario = ? OR correo = ?', [username, email]);
+
+        if (existingUser.length > 0) {
+            let errors = [];
+            if (existingUser[0].nombre_usuario === username) {
+                errors.push('! Nombre de usuario ya existe');
+            }
+            if (existingUser[0].correo === email) {
+                errors.push('! Correo electrónico ya está en uso');
+            }
+            return res.status(400).json(errors);
+        }
+        //ENCRIPTAMOS LA CONTASEÑA
         const passwordHash = await bcrypt.hash(password, 10)
 
         //INSERTAMOS USUARIO EN LA BASE DE DATOS

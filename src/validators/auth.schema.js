@@ -6,23 +6,23 @@ import {object, z} from 'zod'
 export const registerSchema = z.object({
     //usuario
      username: z.string({
-        required_error: "El nombre de usuario es necesario"
+        required_error: "! El nombre de usuario es necesario"
      }),
      //nombre
      name: z.string({
-        required_error: "El nombre completo es necesario"
+        required_error: "! El nombre completo es necesario"
      }),
     //correo
      email: z.string({
-        required_error: "El correo es necesario"
+        required_error: "! El correo es necesario"
      }).email({
         message: "Correo Inválido"
      }),
     //password
      password: z.string({
-        required_error: "La contraseña es necesaria"
+        required_error: "! La contraseña es necesaria"
      }).min(4, {
-        message: 'la contraseña debe tener al menos 6 carácteres'
+        message: '! La contraseña debe tener al menos 4 carácteres'
      }),
      
 })

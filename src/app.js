@@ -4,7 +4,7 @@ import express from 'express';
 //IMPORTAMOS MORGAN y lo configuramos
 import morgan  from 'morgan';
 import cookieParser from 'cookie-parser'
-
+import cors from 'cors'
 
 //IMPORTAMOS LAS RUTAS DE EXPRESS DE LA CARPETA routes
 import indexRoutes from './routes/index.routes.js';
@@ -14,6 +14,11 @@ import authRoutes from './routes/auth.routes.js';
 
 //EJECUTAMOS EXPRESS
 const app = express();
+
+//permitimos que el front nos haga peticiones
+app.use(cors({
+    origin: 'http://localhost:5173'
+}));
 
 app.use(morgan('dev'));
 

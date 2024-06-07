@@ -6,6 +6,52 @@
 /*BODY*/
 body {
     background-color: #191A18;
-
     color: white;
+}
+
+/* REGISTRO =============================================*/
+
+/*h1 título*/
+.titulo {
+    font-size: 2rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 3rem;
+    color: #839783;
+}
+
+/*inputs bg, fuente, fontSize*/
+.inputsAuthForms{
+    background-color: #191A18;
+    font-size: 1rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/*inputs HOVER*/
+.inputsAuthForms:hover{
+    border-bottom: 2px solid #00CC00;
+}
+/*inputs placeholder*/
+.inputsAuthForms::placeholder {
+    color: #839783; /* Cambia el color del placeholder aquí */
+}
+/*inputs placeholder*/
+.placeholder-red::placeholder {
+    color: #EF4444; /* Cambia el color del placeholder aquí */
+}
+
+/*BTN sumnit*/
+.btnSumit {
+    font-size: 1rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+}
+/*BTN sumnit hover*/
+.btnSumit:hover{
+    background-color: #00CC00;
+    color: #191A18;
+    transition: 300ms;
+}
+
+.btnSumitRed:hover{
+    background-color: #EF4444;
+    
 }

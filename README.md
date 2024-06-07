@@ -7,7 +7,7 @@
 # DEPENDENCIAS BACKEND
 > [!IMPORTANT]
 > 
-> ***Comando*** npm i express mysql2 morgan bcryptjs jsonwebtoken cookie-parser zod
+> ***Comando*** npm i express mysql2 morgan bcryptjs jsonwebtoken cookie-parser zod cors
 
 > [!TIP]
 > 
@@ -15,8 +15,10 @@
 
 # DEPENDENCIAS BACKEND
 > [!IMPORTANT]
-
 >Reac-Router-Dom
+>react-hook-form
+>axios
+
 
 # PLANTEAMIENTO
 
