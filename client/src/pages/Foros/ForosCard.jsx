@@ -42,15 +42,24 @@ function ForosCard({ foro }) {
           />
         </div>
 
-        {/* Div del contenido principal (centro) */}
-        <div style={{ flex: "2" }}>
-          <p style={{ color: "#00CC00" }}>{foro.usuario_id}</p>
-          <p>Título: {foro.titulo}</p>
-        </div>
+        {/* Div del contenido principal (derecha) */}
+        <div style={{ flex: "1" }}>
+          <div style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}>
+            <p style={{ color: "#00CC00" }}>{foro.usuario_id}</p>
 
-        {/* Div de la fecha (derecha) */}
-        <div style={{ flex: "1", textAlign: "right", alignSelf: "flex-start" }}>
-          <p style={{ color: "#00CC00" }}>{foro.fecha_creacion}</p>
+            <p style={{ color: "#00CC00" }}>{foro.fecha_creacion}</p>
+          </div>
+
+          {/* Div del titulo (abajo) */}
+          <div
+            style={{ flex: "1", textAlign: "left", alignSelf: "flex-start" }}
+          >
+            <p>Título: {foro.titulo}</p>
+          </div>
         </div>
       </div>
 
