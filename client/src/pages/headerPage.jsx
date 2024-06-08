@@ -14,14 +14,14 @@ function Header(){
 
             {/* BOTONES LOGIN Y REGISTRO */}
 
-            <div >
+            <div className='flex'>
                 <button className="btnLogin
                  px-[1.5rem] py-[0.2rem] 
                  text-[#191A18] border-[#00CC00] 
                  rounded-md border-[2px]   
                  ml-[2rem] 
                  bg-[#00CC00]">
-                    Login
+                    LogIn
                 </button>
 
                 <button 
@@ -34,8 +34,15 @@ function Header(){
                 ml-[1rem]">SingUp
                 
                 </button>
+
+                {/* PERFIL -  - - ------    ------ ---- -  - - - - - - -- --- -   -  - -  -  -  - -} */}
+                <button>
+                    <img className="btnProfile  w-[2.1rem] ml-[1rem]" src="public/profile.png" alt="" />
+                </button>
+
             </div>
 
+           
 
 
         </div>
