@@ -8,9 +8,13 @@ import ForosList from "./pages/Foros/ForosList";
 import Noticias from "./pages/Noticias/NoticiasList";
 import FormularioForo from "./pages/Foros/FormularioForo";
 import HomePage from './pages/homePage.jsx'
+import Profile from "./pages/Profile.jsx";
 
 //importamos el authprovider
 import { AuthProvider } from "./context/auth.context.jsx";
+//impórtamos protected route
+import ProtectedRoute from "./ProtectedRoute.jsx";
+
 
 function App() {
   return (
@@ -30,6 +34,13 @@ function App() {
             <Route path="/Noticias" element={<Noticias />} />
 
             <Route path="/FormularioForo" element={<FormularioForo />} />
+            
+            <Route element={<ProtectedRoute/>}>
+                <Route path="/profile" element={<Profile />} />
+
+            </Route>
+
+
           </Routes>
         </BrowserRouter>
       </ForosContextProvider>

@@ -1,6 +1,6 @@
 import {useForm} from 'react-hook-form';
 import {useAuth} from '../context/useAuth'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 import Header from './headerPage';
 
@@ -11,9 +11,12 @@ function LoginPage(){
 
     //usAuth
     const {signin, errors: signinErrors = []} = useAuth();
+    const navigate = useNavigate();
 
     const onSubmit = handleSubmit((data) =>{
-        signin(data)
+        if(signin(data)) navigate('/')
+        
+        
     });
 
     return (

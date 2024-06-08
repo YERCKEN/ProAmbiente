@@ -3,7 +3,8 @@ import { pool } from "../db.js";
 //IMPORTAMOS BCRYPT PARA ENCRIPTAR LA PASSWORD
 import bcrypt from 'bcryptjs'
 import {createAccessToken} from '../libs/jwt.js'
-
+import {TOKEN_SECRET} from '../config.js';
+import jwt from 'jsonwebtoken'
 
 //LOGIN ================================================================
 
@@ -32,14 +33,20 @@ export const login = async (req, res) => {
 
         //GENRAMOS TOKEN
         const token = await createAccessToken({id: userData.id });
-        res.cookie("token", token);
         
-        // respondemos datos del usuario
+        res.cookie("token", token, {
+            httpOnly: 'None',
+            secure: 'None', // true en producción, false en desarrollo
+            sameSite: 'None',
+          });
+        
+        // respondemos datos del usuario como OBJECT
         res.json({
             id: userData.id,
             username: userData.nombre_usuario,
             name: userData.nombre_completo,
-            email: userData.correo
+            email: userData.correo,
+            token: token
         })
 
     } catch (error) {
@@ -144,4 +151,48 @@ export  const profile = async(req, res)=>{
 
             
 
+}
+
+
+
+export const verifyToken = async (req, res) =>{
+    const {token} = req.body
+
+    console.log('\n\nToken Front')
+    console.log(token)
+
+    if (!token) return res.status(401).json({message: 'Unauthorized, no hay token'})
+
+    console.log('\n\nToken Back')
+    console.log(token)
+    
+    jwt.verify(token, TOKEN_SECRET, async (err, user) =>{
+
+        if (err) return res.status(401).json({message: 'Unauthorized comparacion'})
+        
+        console.log("\n✓ IMPRIMIENDO COMPARACIÓN")
+        console.log(user.id)
+
+        const [userFound] = await pool.query('SELECT * FROM usuarios WHERE id = ?', user.id)
+        
+        console.log("\n✓ IMPRIMIENDO USER FOUND")
+        console.log(userFound)
+
+        if(!userFound) return res.status(401).json({message: 'Unauthorized no existe el man'})
+
+        //return res.json(userFound)
+
+        return res.json({
+            id: userFound[0].id,
+            username: userFound[0].nombre_usuario,
+            name: userFound[0].nombre_completo,
+            email: userFound[0].correo,
+            CreatedDate: userFound[0].fecha_registro,
+            type: userFound[0].es_experto,
+        }) 
+
+        //return res.json(userFound[0]);
+    })
+    
+   
 }
