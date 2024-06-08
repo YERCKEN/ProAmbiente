@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { getForosRequest2, createForoRequest2 } from "../api/auth.js";
+import { getForosRequest, createForoRequest } from "../api/foros.js";
 import PropTypes from "prop-types";
 
 
@@ -9,7 +9,7 @@ export function ForosContextProvider({ children }) {
   const [foros, setForos] = useState([]);
   const getForos = async () => {
     try {
-      const res = await getForosRequest2();
+      const res = await getForosRequest();
       setForos(res.data);
     } catch (error) {
       console.error(error);
@@ -17,7 +17,7 @@ export function ForosContextProvider({ children }) {
   };
   const createForos = async (foro) => {
     try {
-      const res = await createForoRequest2(foro);
+      const res = await createForoRequest(foro);
       console.log(res);
     } catch (error) {
       console.error(error);

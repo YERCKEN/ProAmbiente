@@ -13,7 +13,3 @@ export const verifyTokenRequest = (token) => {
     // Envía el token como parte de los datos en la solicitud POST
     return instance.post('/verify', { token });
 };
-
-export const getForosRequest2 = () => instance.get(`/Foros`)
-
-export const createForoRequest2 = foro => instance.post('/Foros', foro)

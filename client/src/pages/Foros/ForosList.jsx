@@ -8,6 +8,10 @@ function ForosList() {
   useEffect(() => {
     getForos();
   }, []);
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
 
   return (
     <div>
@@ -62,7 +66,7 @@ function ForosList() {
               >
                 <p style={{ color: "#00CC00" }}>{foro.usuario_id}</p>
 
-                <p style={{ color: "#00CC00" }}>{foro.fecha_creacion}</p>
+                <p style={{ color: "#00CC00" }}>{formatDate(foro.fecha_creacion)}</p>
               </div>
 
               {/* Div del titulo (abajo) */}
