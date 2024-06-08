@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
 //import { getForosRequest, createForoRequest } from "../api/foros.js";
-import { getForosRequest2 } from "../api/auth.js";
 import PropTypes from "prop-types";
 
 export const NoticiasContext = createContext();
