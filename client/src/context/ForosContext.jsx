@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import { foros as data } from "../data/foros2";
+
 import { getForosRequest, createForoRequest } from "../api/foros.js";
 import { getForosRequest2 } from "../api/auth.js";
 import PropTypes from 'prop-types';

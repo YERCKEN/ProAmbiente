@@ -1,14 +1,24 @@
 
 import Header from './headerPage'
-
+import {useAuth} from '../context/useAuth';
 
 function HomePage() {
+
+    const { signout } = useAuth();
+
+    const handleSignout = () => {
+        signout();
+        // Redirigir a la página de inicio de sesión u otra página
+    };
 
   return (
     <div>
         <Header />
 
         <div className='border-[2px] flex justify-center flex-wrap max-w-[15rem]'>
+
+            <button className='w-full  text-left p-[1rem] bg-red-500' onClick={handleSignout}>Cerrar sesión</button>
+            
 
             <h2 className='text-left w-full'>Foros</h2>
 

@@ -17,7 +17,8 @@ const app = express();
 
 //permitimos que el front nos haga peticiones
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: 'http://localhost:5173',
+    credentials: true,
 }));
 
 app.use(morgan('dev'));
@@ -30,8 +31,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 //USAMOS LAS RUTAS IMPORTADAS
-app.use(indexRoutes);
-app.use(forosRoutes);
+app.use('/api', indexRoutes);
+app.use('/api', forosRoutes);
 app.use('/api', authRoutes);
 
 

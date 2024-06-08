@@ -13,11 +13,12 @@
 > 
 > npm i nodemon -D
 
-# DEPENDENCIAS BACKEND
+# DEPENDENCIAS FRONT
 > [!IMPORTANT]
 >Reac-Router-Dom
 >react-hook-form
 >axios
+>js-cookie
 
 
 # PLANTEAMIENTO
