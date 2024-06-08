@@ -13,23 +13,19 @@ export default function MenuPage() {
 
   return (
 
-    <div className='flex justify-center flex-wrap mt-[9rem] h-full   '>
+    <div className='flex justify-end flex-wrap mt-[9rem] h-full   '>
 
         <button className='w-full text-right p-[1rem] pr-[4rem] btnMenu bg-[#191A18]  font-semibold' onClick={handleSignout}>Cerrar sesión</button>
       
-        <button className='w-full  text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] font-semibold'>Foros</button>
-        <button className='w-full  text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem]  font-semibold'>Crear Foro</button>
+        <button 
+        className='w-[15rem] text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] font-semibold'>Inicio</button>
 
 
-        
-        <button className='w-full  text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] '>Noticias</button>
+        <button className='w-[15rem]  text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] font-semibold'>Foros</button>
 
-        <button className=' flex  w-full text-right p-[1rem] pr-[2rem] btnMenu  mt-[2rem]  '>
-          <div className='w-[90%] mr-[1rem]  ' >
-          Reportar 
-          </div>
-          {/* <img src="public/reportar.svg"   className='w-10 h-10 ' alt=""  /> */}
-          </button>
+      
+        <button className='w-[15rem] text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] '>Noticias</button>
+
 
     </div>
 
