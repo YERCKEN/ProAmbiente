@@ -36,14 +36,15 @@ function App() {
               <Route path="/Noticias" element={<Noticias />} />
 
 
-              <Route
-                path="/FormularioNoticia"
-                element={<FormularioNoticia />}
-              />
-
+              
+              {/* RUTAS PROTEGIDAS ----------------------------------------------------------------- */}
               <Route element={<ProtectedRoute />}>
+
                 <Route path="/profile" element={<Profile />} />
+                
                 <Route path="/FormularioForo" element={<FormularioForo />} />
+
+                <Route path="/FormularioNoticia"element={<FormularioNoticia />}/>
 
               </Route>
 

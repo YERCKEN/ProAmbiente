@@ -57,10 +57,11 @@ function ForosList() {
                
                 <h1 className="w-[90%] text-[#839783] text-end px-[8rem] text-[1.5rem] font-bold italic">Foros</h1>
 
+                  {/*  DIV BTN */}
+                <div className="w-[70rem] flex justify-center mt-[3rem]">
 
-                <div className="w-1/3 ">
+                  <button onClick={crearForoRedirect} className="btnNuevoForo rounded-xl  w-1/2 text-[#333] text-[2rem] font-extrabold border-[#333] border-[2px] ">+</button>
 
-                  <button onClick={crearForoRedirect} className="btnNuevoForo rounded-xl  w-full text-[#333] text-[2rem] font-extrabold border-[#333] border-[2px] ">+</button>
                 </div>
 
                 {foros.map((foro) => (

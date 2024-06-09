@@ -42,11 +42,8 @@ export default function MenuPage() {
         
         
         <button onClick={homeRedirect} className={`w-[15rem] text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] font-semibold  ${location.pathname === '/' ? 'btnSelected' : ''}`}
-        
-        
         >Inicio
         </button>
-
 
         <button onClick={forosRedirect} className={`w-[15rem] text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] font-semibold  ${location.pathname === '/foros' ? 'btnSelected' : ''}`}>Foros</button>
 

@@ -3,9 +3,13 @@ import { useNoticias } from "../../context/useNoticias";
 //importar HEADER
 import Header from '../headerPage'
 import MenuPage from '../MenuPage'
+
+import { useNavigate } from "react-router-dom";
+
 function NoticasList() {
 
   const { getNoticias, noticias } = useNoticias();
+  const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -13,6 +17,7 @@ function NoticasList() {
 
   }, []);
 
+  
   const formatDate = (dateString) => {
 
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
@@ -20,6 +25,10 @@ function NoticasList() {
 
   };
   
+  const noticiasRedirect = () => {
+
+    navigate("/FormularioNoticia");
+  } 
 
   return (
     <div>
@@ -41,8 +50,9 @@ function NoticasList() {
 
                 <h1 className="w-[90%] text-[#839783] text-end px-[8rem] text-[1.5rem] font-bold italic">Noticias</h1>
 
-                <div className="w-1/3 ">
-                  <button  className="btnNuevoForo rounded-xl  w-full text-[#333] text-[2rem] font-extrabold border-[#333] border-[2px] ">+</button>
+                  {/*  DIV BTN */}
+                <div onClick={noticiasRedirect} className="w-[70rem] flex justify-center mt-[3rem] ">
+                  <button  className="btnNuevoForo rounded-xl    w-1/2 text-[#333] text-[2rem] font-extrabold border-[#333] border-[2px] ">+</button>
                 </div>
 
                 {noticias.map((noticia) => (
