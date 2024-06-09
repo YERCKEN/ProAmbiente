@@ -10,7 +10,9 @@ export const getForos = async (req, res) => {
         //IMPRIMIMOS EL ENCABEZADO
         printEncabezado('OBTENIENDO FOROS');
         // OBTENEMOS TODOS LOS FOROS DESDE LA BD
-        const [result] = await pool.query('SELECT f.id, f.titulo, f.descripcion, f.fecha_creacion, u.nombre_completo, u.nombre_usuario AS usuarios FROM foros f JOIN usuarios u ON f.usuario_id = u.id ORDER BY fecha_creacion DESC');
+        const [result] = await pool.query('SELECT f.id, f.titulo, f.descripcion, f.fecha_creacion, u.nombre_completo AS usuarios, u.nombre_usuario, f.usuario_id FROM foros f JOIN usuarios u ON f.usuario_id = u.id ORDER BY fecha_creacion DESC');
+
+
         console.log(result);
         //MANDAMOS UN JSON DE RESPUESTA
         res.json(result)
@@ -41,6 +43,7 @@ export const  getForo = async (req, res) => {
             return res.status(404).json({message: 'FORO NO ENCONTRADO'})
 
         res.json(result)
+        console.log(result)
 
     } catch (error) {
         

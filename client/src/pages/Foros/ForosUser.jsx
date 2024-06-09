@@ -9,13 +9,22 @@ function ForosUser() {
 
     useEffect(() => {
       getForos();
+
     }, []);
     const formatDate = (dateString) => {
       const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
       return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
+    console.log("foros")
+    console.log(foros)
 
+    console.log("user.id")
+    console.log(user.id)
+    console.log("foro.usuario_id ")
+    console.log(foros.usuario_id)
+
+    //
     const filteredForos = foros.filter(foro => foro.usuario_id == user.id);
 
     const totalForos = filteredForos.length;
