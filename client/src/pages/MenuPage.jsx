@@ -15,7 +15,7 @@ export default function MenuPage() {
 
     <div className='flex justify-end flex-wrap mt-[9rem] h-full   '>
 
-        <button className='w-full text-right p-[1rem] pr-[4rem] btnMenu bg-[#191A18]  font-semibold' onClick={handleSignout}>Cerrar sesión</button>
+        
       
         <button 
         className='w-[15rem] text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] font-semibold'>Inicio</button>
@@ -26,7 +26,7 @@ export default function MenuPage() {
       
         <button className='w-[15rem] text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] '>Noticias</button>
 
-
+        <button className='w-full text-right p-[1rem] pr-[4rem] btnMenu bg-[#191A18] mt-[2rem]  font-semibold' onClick={handleSignout}>LogOut</button>
     </div>
 
   )

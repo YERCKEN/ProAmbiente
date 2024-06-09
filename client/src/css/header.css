@@ -1,4 +1,10 @@
 
+
+.inputHeader:hover{
+    border-bottom: 3px solid #00CC00;
+    transition: 300ms;
+}
+
 /*HEADER ==========================================*/
 
 .btnLogin{
@@ -36,4 +42,17 @@
 .btnProfile:hover{
     transform: scale(calc(1.1));
     transition: 100ms;
+   
+}
+
+.btnProfile h1{
+   font-weight: 700;
+
+
+   background: linear-gradient(to right, #00CC00, white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+   
+   
 }

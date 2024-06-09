@@ -17,13 +17,13 @@ function Profile (){
 
       <div>
 
-        <div className='fixed w-full' >
+        <div className='fixed w-full z-10' >
             <Header/>
 
         </div>
 
-        <div className=' left-0 w-[18.5rem] h-full  fixed '>
-                <MenuPage />
+        <div className=' fixed  left-0 w-[21rem]   z-9  menuPage'>
+            <MenuPage />
             
         </div>
 
@@ -38,8 +38,6 @@ function Profile (){
 
                     {user ? (
                       <div>
-                        <p><strong>id:</strong> {user.id}</p>
-
                         <p><strong>Nombre de usuario:</strong> {user.username}</p>
                         <p><strong>Nombre completo:</strong> {user.name}</p>
                         <p><strong>Correo electrónico:</strong> {user.email}</p>
