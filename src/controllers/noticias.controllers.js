@@ -10,7 +10,7 @@ export const getNoticias = async (req, res) => {
         //IMPRIMIMOS EL ENCABEZADO
         printEncabezado('OBTENIENDO NOTICIAS');
         // OBTENEMOS TODOS LOS FOROS DESDE LA BD
-        const [result] = await pool.query('SELECT * FROM reportes ORDER BY fecha_reporte DESC');
+        const [result] = await pool.query('SELECT r.id, r.titulo, r.descripcion, u.nombre_completo AS usuario, r.fecha_reporte, r.verificado, r.fecha_verificacion, v.nombre_completo AS verificado_por FROM reportes r LEFT JOIN usuarios u ON r.usuario_id = u.id LEFT JOIN usuarios v ON r.verificado_por = v.id ORDER BY fecha_reporte DESC');
         console.log(result);
         //MANDAMOS UN JSON DE RESPUESTA
         res.json(result)

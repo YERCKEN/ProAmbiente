@@ -1,7 +1,5 @@
 import { useContext, useEffect } from "react";
-import { NoticiasContext } from "../../context/NoticiasContext";
-import { Link } from "react-router-dom";
-import { useForos } from "../../context/useForos";
+import { useNoticias } from "../../context/useNoticias";
 
 function NoticasList() {
   const { getNoticias, noticias } = useNoticias();
@@ -63,9 +61,9 @@ function NoticasList() {
                   alignItems: "center",
                 }}
               >
-                <p style={{ color: "#00CC00" }}>{noticia.usuario_id}</p>
+                <p style={{ color: "#00CC00" }}>{noticia.usuario}</p>
 
-                <p style={{ color: "#00CC00" }}>{formatDate(foro.fecha_creacion)}</p>
+                <p style={{ color: "#00CC00" }}>{formatDate(noticia.fecha_reporte)}</p>
               </div>
 
               {/* Div del titulo (abajo) */}

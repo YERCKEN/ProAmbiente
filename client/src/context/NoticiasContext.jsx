@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
-//import { getForosRequest, createForoRequest } from "../api/foros.js";
+import { getNoticiasRequest, createNoticiaRequest } from "../api/noticias.js";
 import PropTypes from "prop-types";
 
 export const NoticiasContext = createContext();
@@ -8,14 +8,14 @@ export function NoticiasContextProvider({ children }) {
   const [noticias, setNoticias] = useState([]);
   const getNoticias = async () => {
     try {
-      const res = await getNoticiasRequest2();
+      const res = await getNoticiasRequest();
       setNoticias(res.data);
     } catch (error) {
       console.error(error);
     }
   };
   const createNoticias = async (noticias) => {
-    const res = await createNoticiasRequest(noticias);
+    const res = await createNoticiaRequest(noticias);
 
     console.log(res);
   };
