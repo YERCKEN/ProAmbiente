@@ -1,3 +1,4 @@
+-- Crear la base de datos
 CREATE DATABASE proambiente;
 USE proambiente;
 
@@ -15,7 +16,7 @@ INSERT INTO desarrolladores (nombre, apellido, nick) VALUES
 ('Jeisson', 'Paredes', 'JP0770'),
 ('Dilan', 'Sobenis', 'DilanDev');
 
--- Tabla de Usuarios
+-- Crear la tabla de usuarios
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_usuario VARCHAR(50) NOT NULL UNIQUE,
@@ -33,7 +34,7 @@ VALUES
 ('dilanDev', '1234', 'dilan@correo.com', 'Dilan Sobenis'),
 ('JP0770', '1234', 'jeisson@correo.com', 'Jeisson A. Paredes');
 
--- Tabla de Roles (por ejemplo, usuario normal, administrador, experto)
+-- Crear la tabla de roles
 CREATE TABLE roles (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_rol VARCHAR(50) NOT NULL UNIQUE
@@ -42,7 +43,7 @@ CREATE TABLE roles (
 -- Insertar roles
 INSERT INTO roles (nombre_rol) VALUES ('usuario');
 
--- Tabla de Roles de Usuarios
+-- Crear la tabla de relación usuario-roles
 CREATE TABLE usuario_roles (
     usuario_id INT,
     rol_id INT,
@@ -56,7 +57,7 @@ INSERT INTO usuario_roles (usuario_id, rol_id)
 SELECT id, (SELECT id FROM roles WHERE nombre_rol = 'usuario')
 FROM usuarios;
 
--- Tabla de Foros
+-- Crear la tabla de foros
 CREATE TABLE foros (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -66,7 +67,7 @@ CREATE TABLE foros (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL
 );
 
--- Tabla de Comentarios en Foros
+-- Crear la tabla de comentarios en foros
 CREATE TABLE comentarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     foro_id INT,
@@ -91,7 +92,7 @@ VALUES
 (2, 2, 'Se deberían implementar más medidas para proteger las especies en peligro, como la creación de reservas naturales.'),
 (3, 3, 'La deforestación tiene un impacto devastador en la biodiversidad y el clima global.');
 
--- Tabla de Reportes
+-- Crear la tabla de reportes
 CREATE TABLE reportes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -104,13 +105,14 @@ CREATE TABLE reportes (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL,
     FOREIGN KEY (verificado_por) REFERENCES usuarios(id) ON DELETE SET NULL
 );
+
 -- Insertar reportes
 INSERT INTO reportes (titulo, descripcion, usuario_id, verificado, fecha_verificacion, verificado_por) VALUES
 ('Contaminación del río', 'Se ha observado una alta concentración de residuos industriales en el río.', 1, FALSE, NULL, NULL),
 ('Destrucción del hábitat', 'Se está construyendo un nuevo complejo residencial en una zona de reserva natural.', 2, TRUE, '2024-05-10 10:30:00', 3),
 ('Caza furtiva', 'Avistamiento de cazadores furtivos en la reserva nacional.', 3, TRUE, '2024-05-12 15:45:00', 2);
 
--- Tabla de Artículos
+-- Crear la tabla de artículos
 CREATE TABLE articulos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(255) NOT NULL,
@@ -124,13 +126,13 @@ CREATE TABLE articulos (
     FOREIGN KEY (verificado_por) REFERENCES usuarios(id) ON DELETE SET NULL
 );
 
--- Tabla de Categorías de Artículos
+-- Crear la tabla de categorías de artículos
 CREATE TABLE categorias (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_categoria VARCHAR(50) NOT NULL UNIQUE
 );
 
--- Relación Artículos-Categorías
+-- Crear la relación artículos-categorías
 CREATE TABLE articulo_categorias (
     articulo_id INT,
     categoria_id INT,
@@ -139,7 +141,7 @@ CREATE TABLE articulo_categorias (
     FOREIGN KEY (categoria_id) REFERENCES categorias(id) ON DELETE CASCADE
 );
 
--- Tabla de Solicitudes de Expertos
+-- Crear la tabla de solicitudes de expertos
 CREATE TABLE solicitudes_expertos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario_id INT,
@@ -150,10 +152,13 @@ CREATE TABLE solicitudes_expertos (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL,
     FOREIGN KEY (evaluado_por) REFERENCES usuarios(id) ON DELETE SET NULL
 );
-select f.id, f.titulo, f.descripcion, f.fecha_creacion, u.nombre_completo AS usuarios from foros f JOIN usuarios u ON f.usuario_id = u.id;
-select f.id, f.titulo, f.descripcion, f.fecha_creacion, u.nombre_completo AS usuarios from foros f JOIN usuarios u ON f.usuario_id = u.id ORDER BY fecha_creacion DESC
--- Insertar reportes
-INSERT INTO reportes (titulo, descripcion, usuario_id, verificado, fecha_verificacion, verificado_por) VALUES
-('Contaminación del río', 'Se ha observado una alta concentración de residuos industriales en el río.', 1, FALSE, NULL, NULL),
-('Destrucción del hábitat', 'Se está construyendo un nuevo complejo residencial en una zona de reserva natural.', 2, TRUE, '2024-05-10 10:30:00', 3),
-('Caza furtiva', 'Avistamiento de cazadores furtivos en la reserva nacional.', 3, TRUE, '2024-05-12 15:45:00', 2);
+
+-- Consultas para seleccionar datos de foros con usuarios
+SELECT f.id, f.titulo, f.descripcion, f.fecha_creacion, u.nombre_completo AS usuarios 
+FROM foros f 
+JOIN usuarios u ON f.usuario_id = u.id;
+
+SELECT f.id, f.titulo, f.descripcion, f.fecha_creacion, u.nombre_completo AS usuarios 
+FROM foros f 
+JOIN usuarios u ON f.usuario_id = u.id 
+ORDER BY fecha_creacion DESC;
