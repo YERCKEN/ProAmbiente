@@ -7,6 +7,7 @@ import { ForosContextProvider } from "./context/ForosContext";
 import ForosList from "./pages/Foros/ForosList";
 import Noticias from "./pages/Noticias/NoticiasList";
 import FormularioForo from "./pages/Foros/FormularioForo";
+import FormularioNoticia from "./pages/Noticias/FormularioNoticia";
 import HomePage from './pages/homePage.jsx'
 import Profile from "./pages/Profile.jsx";
 
@@ -34,6 +35,8 @@ function App() {
             <Route path="/Noticias" element={<Noticias />} />
 
             <Route path="/FormularioForo" element={<FormularioForo />} />
+
+            <Route path="/FormularioNoticia" element={<FormularioNoticia />} />
             
             <Route element={<ProtectedRoute/>}>
                 <Route path="/profile" element={<Profile />} />

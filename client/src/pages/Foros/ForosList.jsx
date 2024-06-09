@@ -1,6 +1,4 @@
 import { useContext, useEffect } from "react";
-import { ForosContext } from "../../context/ForosContext";
-import { Link } from "react-router-dom";
 import { useForos } from "../../context/useForos";
 
 function ForosList() {
@@ -64,7 +62,7 @@ function ForosList() {
                   alignItems: "center",
                 }}
               >
-                <p style={{ color: "#00CC00" }}>{foro.usuario_id}</p>
+                <p style={{ color: "#00CC00" }}>{foro.usuarios}</p>
 
                 <p style={{ color: "#00CC00" }}>{formatDate(foro.fecha_creacion)}</p>
               </div>

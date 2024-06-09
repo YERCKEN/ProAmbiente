@@ -9,8 +9,8 @@ import cors from 'cors'
 //IMPORTAMOS LAS RUTAS DE EXPRESS DE LA CARPETA routes
 import indexRoutes from './routes/index.routes.js';
 import forosRoutes from './routes/foros.routes.js';
+import noticiasRoutes from './routes/noticias.routes.js';
 import authRoutes from './routes/auth.routes.js';
-
 
 //EJECUTAMOS EXPRESS
 const app = express();
@@ -34,6 +34,7 @@ app.use(cookieParser());
 app.use('/api', indexRoutes);
 app.use('/api', forosRoutes);
 app.use('/api', authRoutes);
+app.use('/api', noticiasRoutes);
 
 
 

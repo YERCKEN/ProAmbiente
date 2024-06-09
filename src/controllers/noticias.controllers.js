@@ -3,14 +3,14 @@ import {pool} from '../db.js'
 
 //? FUNCIÓN PARA OBTENER FOROS  ====================================================================
 
-export const getForos = async (req, res) => {
+export const getNoticias = async (req, res) => {
 
    try {
 
         //IMPRIMIMOS EL ENCABEZADO
-        printEncabezado('OBTENIENDO FOROS');
+        printEncabezado('OBTENIENDO NOTICIAS');
         // OBTENEMOS TODOS LOS FOROS DESDE LA BD
-        const [result] = await pool.query('select f.id, f.titulo, f.descripcion, f.fecha_creacion, u.nombre_completo AS usuarios from foros f JOIN usuarios u ON f.usuario_id = u.id ORDER BY fecha_creacion DESC');
+        const [result] = await pool.query('SELECT * FROM reportes ORDER BY fecha_reporte DESC');
         console.log(result);
         //MANDAMOS UN JSON DE RESPUESTA
         res.json(result)
@@ -24,21 +24,21 @@ export const getForos = async (req, res) => {
 }
 
 //? FUNCIÓN PARA OBTENER FOR  ====================================================================
-export const  getForo = async (req, res) => {
+export const  getNoticia = async (req, res) => {
 
     try {
 
         //IMPRIMIMOS EL ENCABEZADO
-        printEncabezado('OBTENIENDO FORO')
+        printEncabezado('OBTENIENDO NOTICIA')
 
         //Obtenemos un foro por su ID
-        const [result] = await pool.query('SELECT * FROM foros WHERE id = ?', req.params.id)
+        const [result] = await pool.query('SELECT * FROM reporte WHERE id = ?', req.params.id)
 
         console.log(result)
 
         // VERIFICAMOS SI SE ENCONTRÓ ALGÚN VALOR
         if (result.length === 0)
-            return res.status(404).json({message: 'FORO NO ENCONTRADO'})
+            return res.status(404).json({message: 'NOTICIA NO ENCONTRADO'})
 
         res.json(result)
 
@@ -53,18 +53,18 @@ export const  getForo = async (req, res) => {
 
 //? FUNCIÓN PARA OBTENER FORO  ====================================================================
 
-export const  createForo = async (req, res) => {
+export const  createNoticia = async (req, res) => {
 
     try {
 
         //IMPRIMIMOS EL ENCABEZADO
-        printEncabezado('CREANDO NUEVO FORO')
+        printEncabezado('CREANDO NUEVA NOTICIA')
     
         //obetenmos los valores
         const {titulo, descripcion, idUsuario} = req.body
         
         // insertamos nuevo foro en la BD
-        const [result] = await pool.query('INSERT INTO foros(titulo, descripcion, usuario_id) VALUES (?, ?, ?)', [titulo, descripcion, idUsuario]);
+        const [result] = await pool.query('INSERT INTO reportes(titulo, descripcion, usuario_id) VALUES (?, ?, ?)', [titulo, descripcion, idUsuario]);
 
         //imprimimos valores en consola
         console.table([{ID: result.insertId, titulo, descripcion, idUsuario}]);
@@ -86,21 +86,21 @@ export const  createForo = async (req, res) => {
 
 
 //?FUNCIÓN PARA ACTUALIZAR FORO  ====================================================================
-export const  updateForo = async (req, res) => {
+export const  updateNoticia = async (req, res) => {
 
     try {
 
-        printEncabezado('ACTUALIZANDO UN DATOS DE UN FORO');
+        printEncabezado('ACTUALIZANDO UN DATOS DE UNA NOTICIA');
 
         // ACTUALIZAMOS EL FORO CON SU ID
-        const [result] = await pool.query('UPDATE foros SET ? WHERE id = ?', [
+        const [result] = await pool.query('UPDATE reportes SET ? WHERE id = ?', [
             req.body,
             req.params.id
         ]);
 
         //verificamos si se encontró el foro
         if (result.affectedRows === 0)
-            return res.status(404).json({message: 'FORO NO ENCONTRADO'})
+            return res.status(404).json({message: 'NOTICIAS NO ENCONTRADO'})
 
         res.json(result);
 
@@ -113,15 +113,15 @@ export const  updateForo = async (req, res) => {
 
 
 //?FUNCIÓN PARA ELIMINAR FORO ====================================================================
-export const  deleteForo = async (req, res) => {
+export const  deleteNoticia = async (req, res) => {
 
     try {
 
         // ELIMINAMOS UN FORO POR SU ID
-        const [result] = await pool.query('DELETE FROM foros WHERE id = ?', [req.params.id]);
+        const [result] = await pool.query('DELETE FROM reportes WHERE id = ?', [req.params.id]);
         
         if( result.affectedRows === 0)
-            return res.status(404).json({message: 'Foro no encontrado'});
+            return res.status(404).json({message: 'Noticias no encontrado'});
 
         //enviamos que todo está bien pero no se recibe ningún dato
         return res.sendStatus(204);

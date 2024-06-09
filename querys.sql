@@ -104,6 +104,11 @@ CREATE TABLE reportes (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL,
     FOREIGN KEY (verificado_por) REFERENCES usuarios(id) ON DELETE SET NULL
 );
+-- Insertar reportes
+INSERT INTO reportes (titulo, descripcion, usuario_id, verificado, fecha_verificacion, verificado_por) VALUES
+('Contaminación del río', 'Se ha observado una alta concentración de residuos industriales en el río.', 1, FALSE, NULL, NULL),
+('Destrucción del hábitat', 'Se está construyendo un nuevo complejo residencial en una zona de reserva natural.', 2, TRUE, '2024-05-10 10:30:00', 3),
+('Caza furtiva', 'Avistamiento de cazadores furtivos en la reserva nacional.', 3, TRUE, '2024-05-12 15:45:00', 2);
 
 -- Tabla de Artículos
 CREATE TABLE articulos (
@@ -145,3 +150,10 @@ CREATE TABLE solicitudes_expertos (
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE SET NULL,
     FOREIGN KEY (evaluado_por) REFERENCES usuarios(id) ON DELETE SET NULL
 );
+select f.id, f.titulo, f.descripcion, f.fecha_creacion, u.nombre_completo AS usuarios from foros f JOIN usuarios u ON f.usuario_id = u.id;
+select f.id, f.titulo, f.descripcion, f.fecha_creacion, u.nombre_completo AS usuarios from foros f JOIN usuarios u ON f.usuario_id = u.id ORDER BY fecha_creacion DESC
+-- Insertar reportes
+INSERT INTO reportes (titulo, descripcion, usuario_id, verificado, fecha_verificacion, verificado_por) VALUES
+('Contaminación del río', 'Se ha observado una alta concentración de residuos industriales en el río.', 1, FALSE, NULL, NULL),
+('Destrucción del hábitat', 'Se está construyendo un nuevo complejo residencial en una zona de reserva natural.', 2, TRUE, '2024-05-10 10:30:00', 3),
+('Caza furtiva', 'Avistamiento de cazadores furtivos en la reserva nacional.', 3, TRUE, '2024-05-12 15:45:00', 2);
