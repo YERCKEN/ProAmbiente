@@ -1,7 +1,7 @@
 import {useAuth} from '../context/useAuth';
 //importamos useNavigate para redirigir a otra página
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation} from 'react-router-dom';
 
 
 export default function MenuPage() {
@@ -9,6 +9,7 @@ export default function MenuPage() {
     const { signout } = useAuth();
     //Utilizamos useNavigate para redirigir a otra página
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSignout = () => {
         signout();
@@ -39,14 +40,18 @@ export default function MenuPage() {
     <div className='flex justify-end flex-wrap mt-[9rem] h-full   '>
 
         
+        
+        <button onClick={homeRedirect} className={`w-[15rem] text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] font-semibold  ${location.pathname === '/' ? 'btnSelected' : ''}`}
+        
+        
+        >Inicio
+        </button>
+
+
+        <button onClick={forosRedirect} className={`w-[15rem] text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] font-semibold  ${location.pathname === '/foros' ? 'btnSelected' : ''}`}>Foros</button>
+
       
-        <button onClick={homeRedirect} className='w-[15rem] text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] font-semibold'>Inicio</button>
-
-
-        <button onClick={forosRedirect} className='w-[15rem]  text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] font-semibold'>Foros</button>
-
-      
-        <button onClick={noticiasRedirect} className='w-[15rem] text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] '>Noticias</button>
+        <button onClick={noticiasRedirect} className={`w-[15rem] text-right p-[1rem] pr-[4rem] btnMenu  mt-[2rem] font-semibold  ${location.pathname === '/noticias' ? 'btnSelected' : ''}`}>Noticias</button>
 
         <button onClick={handleSignout} className='w-full text-right p-[1rem] pr-[4rem] btnMenu bg-[#191A18] mt-[2rem]  font-semibold' >LogOut</button>
     </div>

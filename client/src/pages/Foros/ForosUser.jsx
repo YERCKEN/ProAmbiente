@@ -16,13 +16,7 @@ function ForosUser() {
       return new Date(dateString).toLocaleDateString(undefined, options);
     };
 
-    console.log("foros")
-    console.log(foros)
 
-    console.log("user.id")
-    console.log(user.id)
-    console.log("foro.usuario_id ")
-    console.log(foros.usuario_id)
 
     //
     const filteredForos = foros.filter(foro => foro.usuario_id == user.id);

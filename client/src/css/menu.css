@@ -17,3 +17,9 @@
       border-right:  3px solid #00CC00   ;
   
   }
+
+  .btnSelected{
+    color: #00CC00;
+      transition: 100ms;
+      border-right:  3px solid #00CC00   ;
+  }

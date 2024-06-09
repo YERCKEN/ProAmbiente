@@ -38,7 +38,9 @@ function NoticasList() {
       <div className='max-w-full  flex'>
 
         <div className=' flex justify-center w-full pl-[20rem] py-[10rem] flex-wrap '>
-          
+
+                <h1 className="w-[90%] text-[#839783] text-end px-[8rem] text-[1.5rem] font-bold italic">Noticias</h1>
+
                 <div className="w-1/3 ">
                   <button  className="btnNuevoForo rounded-xl  w-full text-[#333] text-[2rem] font-extrabold border-[#333] border-[2px] ">+</button>
                 </div>
@@ -60,10 +62,10 @@ function NoticasList() {
 
                                   <img src="public/profile2.png" className="rounded-[10px] w-[40px] h-auto mt-[15px]"/>
 
-                                  <h2 className='text-[#00CC00] ml-[0.5rem] pt-[1.3rem] font-bold'>{noticia.usuario}</h2>
+                                  <h2 className='text-[#00CC00] ml-[0.5rem] pt-[1.3rem] font-bold'>{noticia.nombreCompleto}</h2>
 
-                             {/*      <p className='text-[#839783] ml-[0.5rem] pt-[1.3rem]' >@{foro.usuarios}</p>
- */}
+                                <p className='text-[#839783] ml-[0.5rem] pt-[1.3rem]' >@{noticia.usuario}</p>
+
                               </div>
 
 
