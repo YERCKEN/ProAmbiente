@@ -35,7 +35,6 @@ function App() {
 
               <Route path="/Noticias" element={<Noticias />} />
 
-              <Route path="/FormularioForo" element={<FormularioForo />} />
 
               <Route
                 path="/FormularioNoticia"
@@ -44,7 +43,12 @@ function App() {
 
               <Route element={<ProtectedRoute />}>
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/FormularioForo" element={<FormularioForo />} />
+
               </Route>
+
+
+
             </Routes>
           </BrowserRouter>
         </NoticiasContextProvider>

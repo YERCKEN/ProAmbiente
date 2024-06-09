@@ -1,0 +1,11 @@
+.btnForos:hover{
+
+    border-bottom: 3px solid #00CC00;;
+}
+
+
+.btnNuevoForo:hover{
+    background: #333;
+    color: white;
+   
+}

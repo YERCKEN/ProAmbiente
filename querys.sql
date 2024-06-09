@@ -30,9 +30,9 @@ CREATE TABLE usuarios (
 -- Insertar los usuarios
 INSERT INTO usuarios (nombre_usuario, contrasena, correo, nombre_completo)
 VALUES 
-('yercken', '1234', 'yercken@correo.com', 'Edwar I Gonzalez C'),
-('dilanDev', '1234', 'dilan@correo.com', 'Dilan Sobenis'),
-('JP0770', '1234', 'jeisson@correo.com', 'Jeisson A. Paredes');
+('yercken', '$10$E4gRoIszV7nBTQ1FErpxs.4Tv0EbsmRfZtFGvc7N9go3O5Nym8NrO', 'yercken@correo.com', 'Edwar I Gonzalez C'),
+('dilanDev', '$10$E4gRoIszV7nBTQ1FErpxs.4Tv0EbsmRfZtFGvc7N9go3O5Nym8NrO', 'dilan@correo.com', 'Dilan Sobenis'),
+('JP0770', '$10$E4gRoIszV7nBTQ1FErpxs.4Tv0EbsmRfZtFGvc7N9go3O5Nym8NrO', 'jeisson@correo.com', 'Jeisson A. Paredes');
 
 -- Crear la tabla de roles
 CREATE TABLE roles (
