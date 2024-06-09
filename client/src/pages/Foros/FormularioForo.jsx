@@ -1,12 +1,15 @@
 import {useForm} from "react-hook-form";
 import { useForos } from "../../context/useForos";
-
+//Impoortamos los datos del usuario
+import { useAuth } from "../../context/useAuth"
 //import { Link } from "react-router-dom";
 
 function FormularioForo() {
+  const {user} = useAuth()
   const { register, handleSubmit } = useForm();
   const { createForos } = useForos();
   const onSubmit = handleSubmit((data) => {
+    data.idUsuario=user.id;
     createForos(data);
   });
   return (

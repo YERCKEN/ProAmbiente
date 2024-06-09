@@ -1,12 +1,16 @@
-import {useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useNoticias } from "../../context/useNoticias";
-
-//import { Link } from "react-router-dom";
+//Impoortamos los datos del usuario
+import { useAuth } from "../../context/useAuth";
 
 function FormularioNoticias() {
+  const { user } = useAuth();
+  console.log("USUARIO DESDE PROFILE");
+  console.log(user.id);
   const { register, handleSubmit } = useForm();
   const { createNoticias } = useNoticias();
   const onSubmit = handleSubmit((data) => {
+    data.idUsuario = user.id;
     createNoticias(data);
   });
   return (
@@ -25,6 +29,7 @@ function FormularioNoticias() {
           {...register("descripcion")}
           className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
         ></textarea>
+        
         <button>Guardar</button>
       </form>
     </div>

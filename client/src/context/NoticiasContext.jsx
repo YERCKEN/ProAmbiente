@@ -14,8 +14,8 @@ export function NoticiasContextProvider({ children }) {
       console.error(error);
     }
   };
-  const createNoticias = async (noticias) => {
-    const res = await createNoticiaRequest(noticias);
+  const createNoticias = async (noticias, usuario) => {
+    const res = await createNoticiaRequest(noticias, usuario);
 
     console.log(res);
   };
