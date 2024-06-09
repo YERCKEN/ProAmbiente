@@ -71,14 +71,9 @@ function FormularioForo() {
                     </form>
 
                 </div>
-
             </div>
-
-
           </div>
-
       </div>
-
 
 
   );
