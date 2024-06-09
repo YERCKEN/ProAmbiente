@@ -52,8 +52,7 @@ function Header(){
 
             {/* ocultar botones login y regisro si está inciiado sesion */}
      
-            {(!user && location.pathname !== '/login') || 
-            (!user && location.pathname !== '/register') &&(
+            {!user && location.pathname !== '/login'&&(
 
                 <div className='flex'>
                             
