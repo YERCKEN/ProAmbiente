@@ -14,9 +14,11 @@ function LoginPage(){
     const navigate = useNavigate();
 
     const onSubmit = handleSubmit((data) =>{
-        if(signin(data)) navigate('/')
-        
-        
+
+      signin(data)
+      .then(() => {
+        navigate('/profile')
+      })
     });
 
     return (
@@ -66,7 +68,7 @@ function LoginPage(){
 
                 <button type="submit" className={`btnSumit px-4 py-2 w-full text-[#00CC00] border-[2px] border-[#00CC00] my-10
                   
-                  ${errors.password || errors.username ? 'border-red-500 text-red-500 btnSumitRed' : ''}
+                  ${errors.password || errors.username ? 'border-[#EF4444] text-[#EF4444] btnSumitRed' : ''}
                   `}
                   disabled={errors.password || errors.username}
                   
