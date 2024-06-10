@@ -24,13 +24,14 @@ export const login = async (req, res) => {
 
         //guardamos data del user
         const userData = result[0];
-        console.log("\n\nDATOS DEL USUARIO")
+        console.log("\n\nDATOS DEL USUARIO LOGIN")
         console.table(userData)
 
         //COMPARAMOS LA CONTRASEÑA
         const isMatch = await bcrypt.compare(password, userData.contrasena);
         if(!isMatch) return res.status(500).json(["Contraseña incorrecta"]);
 
+        console.log('CONTRASEÑA CORRECTA')
         //GENRAMOS TOKEN
         const token = await createAccessToken({id: userData.id });
         
