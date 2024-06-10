@@ -1,14 +1,14 @@
 import { useContext, useEffect } from "react";
-import { useForos } from "../../context/useForos";
+import { useNoticias } from "../../context/useNoticias";
 import { useAuth } from "../../context/useAuth"
 
-function ForosUser() {
+function NoticiasUser() {
 
     const {user} = useAuth()
-    const { getForos, foros } = useForos();
+    const { getNoticias, noticias } = useNoticias();
 
     useEffect(() => {
-      getForos();
+      getNoticias();
 
     }, []);
     const formatDate = (dateString) => {
@@ -19,19 +19,19 @@ function ForosUser() {
 
 
     //
-    const filteredForos = foros.filter(foro => foro.usuario_id == user.id);
+    const filteredNoticias = noticias.filter(noticia => noticia.usuario_id == user.id);
 
-    const totalForos = filteredForos.length;
+    const totalNoticias = filteredNoticias.length;
 
-    console.log("Total de foros del usuario:", totalForos);
+    console.log("Total de noticias del usuario:", totalNoticias);
   
     return (
 
       <div>
-        {filteredForos.map((foro) => (
+        {filteredNoticias.map((noticia) => (
 
               <button className=" btnForos bg-[#333] text-white p-[25px] mt-[3rem] w-full rounded-[10px] rounded-b-none"
-                key={foro.id}>
+                key={noticia.id}>
 
                 <div className="flex justify-between items-start">
 
@@ -45,15 +45,14 @@ function ForosUser() {
 
                               <img src="public/profile2.png" className="rounded-[10px] w-[40px] h-auto mt-[15px]"/>
 
-                              <h2 className='text-[#00CC00] ml-[0.5rem] pt-[1.3rem] font-bold'>{foro.usuarios}</h2>
+                              <h2 className='text-[#00CC00] ml-[0.5rem] pt-[1.3rem] font-bold'>{noticia.usuarios}</h2>
 
-                              <p className='text-[#839783] ml-[0.5rem] pt-[1.3rem]' >@{foro.nombre_usuario}</p>
+                              <p className='text-[#839783] ml-[0.5rem] pt-[1.3rem]' >@{noticia.nombre_usuario}</p>
 
                           </div>
 
 
-                            <p className='text-[#839783]'>{formatDate(foro.fecha_creacion)}</p>
-                            
+                            <p className='text-[#839783]'>{formatDate(noticia.fecha_reporte)}</p>
 
                         </div>
 
@@ -62,7 +61,7 @@ function ForosUser() {
                         <div className="flex "> 
 
                           <h3 className="ml-[3rem] text-[#00CC00] font-semibold " >Título:</h3>
-                          <p className="ml-[0.5rem]" >{foro.titulo}</p>
+                          <p className="ml-[0.5rem]" >{noticia.titulo}</p>
 
                         </div>
 
@@ -71,7 +70,7 @@ function ForosUser() {
 
                   {/* div para la descripción  */}
                   <div className="pt-[10px] ml-[3rem] text-start flex justify-between" >
-                    <p>{foro.descripcion}</p>
+                    <p>{noticia.descripcion}</p>
 
                     <div className="flex  justify-end  mt-[1rem] ml-[3rem]">
 
@@ -86,10 +85,13 @@ function ForosUser() {
                   </div>
                   </div>
 
+                    <p>Estado de la noticia</p>
+                    <p>{noticia.verificado}</p>
+ 
               </button>
               ))}
       </div>
     );
   }
   
-  export default ForosUser;
+  export default NoticiasUser;

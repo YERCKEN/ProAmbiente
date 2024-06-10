@@ -8,10 +8,17 @@ import { useAuth } from "../context/useAuth"
 
 import ForosUser from './Foros/ForosUser.jsx';
 
+import NavBar from './ActiveOptions.jsx';
+
+
+import NoticiasUser from './Foros/NoticiasUser.jsx'
+
+import { useState } from 'react';
 
 function Profile (){
 
     const {user} = useAuth()
+    const [activeTab, setActiveTab] = useState('foros');
 
     console.log('USUARIO DESDE PROFILE')
     console.log(user)
@@ -72,12 +79,12 @@ function Profile (){
 
                               <div className='flex flex-col justify-center items-center w-full'>
 
-                                <div className='flex flex-col justify-center items-start bg-[#333333] w-[80%] mb-2 p-4 px-[1rem] rounded-t-lg'>
+                                <div className='flex flex-col justify-center items-start bg-[#333333] w-[80%] mb-2 p-4 px-[1rem] rounded-t-lg shadow-custom-box'>
                                   <p><strong>Nombre completo</strong></p>
                                   <p className='text-customGreen'>{user.name}</p>
                                 </div>
 
-                                <div className='flex flex-col justify-center items-start bg-[#333333] w-[80%] p-4 rounded-b-lg px-[1rem]'>
+                                <div className='flex flex-col justify-center items-start bg-[#333333] w-[80%] p-4 rounded-b-lg px-[1rem] shadow-custom-box'>
                                   <p><strong>Tipo de usuario</strong></p>
                                   <p>Miembro de <strong className='text-customGreen'>Pro</strong>Ambiente</p>
                                 </div>
@@ -93,12 +100,12 @@ function Profile (){
 
                               <div className='flex flex-col justify-center items-center w-full'>
 
-                                <div className='flex flex-col justify-center items-start bg-[#333333] w-[80%] mb-2 p-4 rounded-t-lg px-[1rem]'>
+                                <div className='flex flex-col justify-center items-start bg-[#333333] w-[80%] mb-2 p-4 rounded-t-lg px-[1rem] shadow-custom-box'>
                                   <p><strong>Correo electrónico</strong></p>
                                   <p className='text-customGreen'>{user.email}</p>
                                 </div>
 
-                                <div className='flex flex-col justify-center items-start bg-[#333333] w-[80%] p-4 rounded-b-lg px-[1rem]'>
+                                <div className='flex flex-col justify-center items-start bg-[#333333] w-[80%] p-4 rounded-b-lg px-[1rem] shadow-custom-box'>
                                   <p><strong>Se unió desde</strong></p>
                                   <p className='text-customGreen'>{formatDate(user.CreatedDate)}</p>
                                 </div>
@@ -112,18 +119,14 @@ function Profile (){
                         <hr className='mt-3 w-[100%] border-[#333]' />
 
                         {/* BTN FOROS Y NOTICAS - - --- - - ----- ---------------- */}
-                        <div className='flex flex-row justify-start items-start pl-2 mt-[1rem]'>
-
-                          <a className='font-extrabold text-[#00CC00]  border-b  px-[1rem] py-[0.5rem]' href="">Foros</a>
-                          <a href="" className='px-[1rem] py-[0.5rem]'>Noticias</a>
-                        </div>
-
+                        
+                        <NavBar activeTab={activeTab} setActiveTab={setActiveTab}/>
 
                         </div>
 
                         <div className="w-[40rem]">
 
-                          <ForosUser/>
+                          {activeTab === 'foros' ? <ForosUser/> : <NoticiasUser/> }
                           
                         </div>
 
